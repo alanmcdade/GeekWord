@@ -20,7 +20,7 @@ public class SimpleFixedScoreBoard implements ScoreBoard {
             throw new IllegalArgumentException("Position cannot be less than 0");
         }
 
-        if (position >= MAX_SIZE){
+        if (position >= MAX_SIZE) {
             throw new IllegalArgumentException("Position cannot be greater than 9");
         }
     }
@@ -28,17 +28,21 @@ public class SimpleFixedScoreBoard implements ScoreBoard {
     @Override
     public void addScore(Score score) {
         int position = 0;
-        while(position < MAX_SIZE){
+        while (position < MAX_SIZE) {
             Optional<Score> possibleScore = Optional.ofNullable(highScores[position]);
 
-            if (possibleScore.isPresent()){
-                if (possibleScore.get().compareTo(score) > 0) {
+            if (possibleScore.isPresent()) {
+                Score scoreUnderConsideration = possibleScore.get();
+                if (scoreUnderConsideration.equals(score)) {
+                    break;
+                }
+
+                if (scoreUnderConsideration.compareTo(score) > 0) {
                     System.arraycopy(highScores, position, highScores, position + 1, MAX_SIZE - position - 1);
                     highScores[position] = score;
                     break;
-                } else {
-                    position++;
                 }
+                position++;
             } else {
                 highScores[position] = score;
                 break;

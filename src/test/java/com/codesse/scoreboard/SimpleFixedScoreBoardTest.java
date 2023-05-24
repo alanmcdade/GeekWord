@@ -6,6 +6,10 @@ import org.junit.Test;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SimpleFixedScoreBoardTest extends TestCase {
     private SimpleFixedScoreBoard scoreBoard;
@@ -40,9 +44,19 @@ public class SimpleFixedScoreBoardTest extends TestCase {
     }
 
     @Test
-    public void testPlayersCanBeRepeated() {
-        assertEquals(player3, scoreBoard.scoreAt(5));
-        assertEquals(player3, scoreBoard.scoreAt(6));
-        assertEquals(player3, scoreBoard.scoreAt(7));
+    public void testScoresCanBeRepeated() {
+        List<Score> scores = IntStream.range(0, 9).boxed()
+                .map(index -> {
+                    try {
+                        return scoreBoard.scoreAt(index);
+                    } catch (IllegalArgumentException e) {
+                        return null;
+                    }
+                })
+                .filter(Objects::nonNull)
+                .filter(score -> score.getPlayerName().equals("Player3"))
+                .collect(Collectors.toList());
+        assertEquals(1, scores.size());
     }
+
 }

@@ -1,6 +1,7 @@
 package com.codesse.scoreboard;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Score implements Comparable<Score>{
     public static final int SAME = 0;
@@ -27,6 +28,9 @@ public class Score implements Comparable<Score>{
     public LocalDateTime getWhen() {
         return when;
     }
+    public String getWord() {
+        return word;
+    }
 
     @Override
     public int compareTo(Score other) {
@@ -39,7 +43,16 @@ public class Score implements Comparable<Score>{
         }
     }
 
-    public String getWord() {
-        return word;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Score score1 = (Score) o;
+        return Objects.equals(playerName, score1.playerName) && Objects.equals(score, score1.score) && Objects.equals(when, score1.when) && Objects.equals(word, score1.word);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playerName, score, when, word);
     }
 }
