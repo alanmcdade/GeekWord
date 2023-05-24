@@ -1,9 +1,9 @@
 package com.codesse.scoreboard;
 
-public class ScoreBoardCurrencyDecorator implements ScoreBoard{
+public class SimpleScoreBoardCurrencyDecorator implements ScoreBoard{
     private final ScoreBoard scoreBoard;
 
-    public ScoreBoardCurrencyDecorator(ScoreBoard scoreBoard) {
+    public SimpleScoreBoardCurrencyDecorator(ScoreBoard scoreBoard) {
         this.scoreBoard = scoreBoard;
     }
 

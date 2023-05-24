@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 
-public class ScoreBoardCurrencyDecoratorTest extends TestCase {
+public class QueueScoreBoardCurrencyDecoratorTest extends TestCase {
 
     public static final String THIRTEEN_LETTER_WORD = "waterflooding";
     public static final String TWELVE_LETTER_WORD = "abandonments";
@@ -23,7 +23,7 @@ public class ScoreBoardCurrencyDecoratorTest extends TestCase {
     public static final String SIX_LETTER_WORD = "abbacy";
     public static final String FIVE_LETTER_WORD = "abate";
     public static final String FOUR_LETTER_WORD = "abba";
-        private ScoreBoard scoreBoard = new ScoreBoardCurrencyDecorator(new SimpleFixedScoreBoard());
+        private ScoreBoard scoreBoard = new QueueScoreBoardConcurrencyDecorator(new SimpleFixedScoreBoard());
 
     @Test
     public void testScoreboardConcurrency() {
