@@ -7,8 +7,8 @@ import org.junit.Test;
 import java.time.Clock;
 import java.time.LocalDateTime;
 
-public class ScoreBoardTest extends TestCase {
-    private ScoreBoard scoreBoard;
+public class SimpleFixedScoreBoardTest extends TestCase {
+    private SimpleFixedScoreBoard scoreBoard;
     private final Score player1 = new Score("Player1", "all", 3, LocalDateTime.now(Clock.systemUTC()));
     private final Score player2 = new Score("Player2", "word", 4, LocalDateTime.now(Clock.systemUTC()));
     private final Score player3 = new Score("Player3", "tale",0, LocalDateTime.now(Clock.systemUTC()));
@@ -18,7 +18,7 @@ public class ScoreBoardTest extends TestCase {
 
     @Before
     public void setUp(){
-        scoreBoard = new ScoreBoard();
+        scoreBoard = new SimpleFixedScoreBoard();
         scoreBoard.addScore(player1);
         scoreBoard.addScore(player2);
         scoreBoard.addScore(player3);

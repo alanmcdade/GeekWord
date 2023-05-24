@@ -3,6 +3,7 @@ package com.codesse.wordgeek;
 
 import com.codesse.scoreboard.Score;
 import com.codesse.scoreboard.ScoreBoard;
+import com.codesse.scoreboard.SimpleFixedScoreBoard;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -18,10 +19,10 @@ public class WordGeekImpl implements WordGeek {
 
     private final ScoreBoard scoreBoard;
 
-    public WordGeekImpl(String areallylongword, ValidWords validWords) {
+    public WordGeekImpl(String areallylongword, ValidWords validWords, ScoreBoard scoreBoard) {
         this.frequencyMap = new LetterFrequencyGraph(areallylongword);
         this.validWords = validWords;
-        this.scoreBoard = new ScoreBoard();
+        this.scoreBoard = scoreBoard;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.codesse.wordgeek;
 
+import com.codesse.scoreboard.ScoreBoard;
+import com.codesse.scoreboard.SimpleFixedScoreBoard;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -14,6 +16,7 @@ public class SubmissionTest {
 
 	static ValidWords validWords;
 	WordGeek service;
+	ScoreBoard scoreBoard = new SimpleFixedScoreBoard();
 
 	@BeforeClass
 	public static void oneTimeSetUp() {
@@ -22,7 +25,7 @@ public class SubmissionTest {
 
 	@Before
 	public void setUp() throws Exception {
-		service = new WordGeekImpl("areallylongword", validWords);
+		service = new WordGeekImpl("areallylongword", validWords, scoreBoard);
 	}
 
 	@Test
