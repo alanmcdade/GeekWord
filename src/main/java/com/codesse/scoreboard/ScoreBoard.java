@@ -1,11 +1,5 @@
 package com.codesse.scoreboard;
 
-
-import org.apache.commons.collections.list.TreeList;
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 
 public class ScoreBoard {
